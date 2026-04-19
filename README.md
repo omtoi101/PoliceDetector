@@ -37,9 +37,9 @@ To run this on an Android device using Termux, follow these steps:
    chmod +x termux_setup.sh
    ./termux_setup.sh
    ```
-5. **Run the detector**:
+5. **Run the detector (with root)**:
    ```bash
-   python police.py
+   su -c 'python police.py'
    ```
 
-*Note: For reliable Bluetooth scanning on many Android devices, root access may be required. If you have root, the script will automatically attempt to use `hcitool` via `su` if `simplepyble` is not available.*
+*Note: **Root access is required** for reliable Bluetooth scanning on Android via Termux. The script uses `hcitool` through the `su` command to access the phone's built-in Bluetooth hardware.*

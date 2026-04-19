@@ -9,21 +9,20 @@ echo "[*] Updating packages..."
 pkg update && pkg upgrade -y
 
 echo "[*] Installing system dependencies..."
-pkg install -y python python-pip clang cmake ninja termux-api mpv
-
-# Optional: if root is available, hcitool can be useful
-pkg install -y bluez-utils
-
-echo "[*] Installing Python libraries..."
-pip install simplepyble || echo "Warning: simplepyble failed to install. Fallback scanning will be used."
+pkg install -y python termux-api mpv bluez-utils
 
 echo "[*] Setting up permissions..."
-echo "Please make sure you have:"
-echo "1. Installed the 'Termux:API' app from F-Droid."
-echo "2. Granted Location and Nearby Devices permissions to both Termux and Termux:API."
-echo "3. If NOT rooted: Bluetooth scanning may be restricted by Android."
-echo "4. If rooted: The script will use 'hcitool' via 'su' as a fallback."
+echo "1. Install the 'Termux:API' app from F-Droid."
+echo "2. Grant Location and Nearby Devices permissions to BOTH Termux and Termux:API in Android Settings."
+
+echo ""
+echo "[!] IMPORTANT: ROOT ACCESS REQUIRED"
+echo "Due to Android's restrictions on Bluetooth scanning from Termux,"
+echo "you MUST have a rooted device to run this utility effectively."
+echo ""
+echo "The script will use 'hcitool' via 'su' (root) to scan."
+echo ""
 
 echo "[*] Done. You can now run the detector with:"
-echo "    python police.py"
+echo "    su -c 'python police.py'"
 echo "-------------------------------------------------------"
