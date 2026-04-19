@@ -21,3 +21,25 @@ Utility to detect police officers equipped with Axon brand Body Worn Cameras and
 	</a></sup><br />
 	
 </p>
+
+## Running on Termux (Android)
+
+To run this on an Android device using Termux, follow these steps:
+
+1. **Install Termux** from [F-Droid](https://f-droid.org/en/packages/com.termux/).
+2. **Install Termux:API** app from [F-Droid](https://f-droid.org/en/packages/com.termux.api/).
+3. **Grant Permissions**: In Android settings, grant "Location" and "Nearby Devices" permissions to both Termux and Termux:API.
+4. **Open Termux** and run the setup script:
+   ```bash
+   pkg install git
+   git clone https://github.com/PoliceDetector/PoliceDetector
+   cd PoliceDetector
+   chmod +x termux_setup.sh
+   ./termux_setup.sh
+   ```
+5. **Run the detector**:
+   ```bash
+   python police.py
+   ```
+
+*Note: For reliable Bluetooth scanning on many Android devices, root access may be required. If you have root, the script will automatically attempt to use `hcitool` via `su` if `simplepyble` is not available.*
